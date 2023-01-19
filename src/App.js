@@ -105,7 +105,7 @@ function App() {
           borderColor="black"
           color="black"
         >
-          <Center fontSize={{ base: "30px", md: "25px", lg: "30px" }} p={0}>
+          <Center fontSize='100%' p={0}>
             {weathers.name.toUpperCase()}
           </Center>
 
