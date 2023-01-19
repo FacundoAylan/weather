@@ -70,7 +70,7 @@ function App() {
               <Input
                 fontSize={{ base: "12px", md: "22px", lg: "22px" }}
                 pr="8rem"
-                placeholder="Search your next weather..."
+                placeholder="Select a country..."
                 value={search}
                 onChange={onChange}
                 background="white"
