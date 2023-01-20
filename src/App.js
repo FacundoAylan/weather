@@ -98,9 +98,7 @@ function App() {
       {/* search */}
 
       {weathers && forecast ? (
-        <Center>
           <Card weathers={weathers} forecast={forecast}/>
-        </Center>
       ) : (
         <Container
           mt={10}

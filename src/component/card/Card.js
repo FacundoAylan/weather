@@ -16,17 +16,19 @@ function Card({ weathers, forecast }) {
       <Flex
         bg="#0D74FF"
         color="white"
-        mt={10}
-        w={{ base: "60vw", md: "35vw", lg: "700px" }}
-        h={{ base: "45vh", md: "55vh", lg: "50vh" }}
+        mt={{ base: "5px", md: "10px", lg: "10px" }}
+        w={{ base: "90vw", md: "600px", lg: "700px" }}
+        h={{ base: "70vh", md: "58vh", lg: "50vh" }}
+        ml={{ base: "5%", md: "10vw", lg: "25vw" }}
+        flexDirection={{ base: "column", md: "row", lg: "row" }}
         borderRadius={12}
         border="2px"
         borderColor="black"
         position="relative"
       >
-        <Box w="45%" h="100%" >
+        <Box w={{ base: "100%", md: "45%", lg: "45%" }} h={{ base: "40%", md: "100%", lg: "100%" }}>
 
-          <Box position="absolute" w='45%'>
+          <Box position="absolute" w={{ base: "100%", md: "45%", lg: "45%" }}>
             <Center>
               <Text fontSize="100%" >
                 {weathers.name.toUpperCase()}
@@ -38,7 +40,7 @@ function Card({ weathers, forecast }) {
               </Text>
             </Center>
             <Center>
-              <Text fontSize={36} position="absolute" mt='80px'>
+              <Text fontSize={{ base: '25px', md: '36px', lg: '36px' }} position="absolute" mt='80px'>
                 {(weathers.main.temp - 273.15).toFixed(1)}ºC
               </Text>
             </Center>
@@ -53,12 +55,12 @@ function Card({ weathers, forecast }) {
             type="img"
             borderTopLeftRadius={12}
             w="100%"
-            h="100%"
+            h='100%'
           />
         </Box>
 
         <Box>
-          <Box pt={5} pl={3}>
+          <Box pt={{ base: "2px", md: "5px", lg: "15px" }} pl={3} fontSize={{ base: "75%", md: "100%", lg: "100%" }}>
             <Text>
               Temperatura máxima: {(weathers.main.temp_max - 273.15).toFixed(1)}ºC
             </Text>
@@ -73,13 +75,13 @@ function Card({ weathers, forecast }) {
             <Text>Velocidad del viento: {weathers.wind.speed}m/s</Text>
           </Box>
 
-          <Divider pt={5}/>
+          <Divider pt={{ base: "0", md: "5%", lg: "5%" }}/>
 
-          <Flex pt={10} ml={2}>
+          <Flex pt={{ base: "5%", md: "10%", lg: "10%" }} ml={{ base: "2%", md: "5%", lg: "5%" }} w='100%'>
             <Box>
-              <Text fontSize='90%'>{forecastDate3}h</Text>
+              <Text fontSize={{ base: "80%", md: "80%", lg: "90%" }}>{forecastDate3}h</Text>
               <Center>
-                <Text>{forecast.list[1].weather[0].description}</Text>
+                <Text fontSize={{ base: "65%", md: "80%", lg: "100%" }}>{forecast.list[1].weather[0].description}</Text>
               </Center>
 
               <Center>
@@ -94,11 +96,11 @@ function Card({ weathers, forecast }) {
               </Center>
             </Box>
 
-            <Box ml={5}>
-              <Text fontSize='90%'>{forecastDate6}h</Text>
+            <Box ml={{ base: "10%", md: "10%", lg: "10%" }}>
+              <Text fontSize={{ base: "80%", md: "80%", lg: "90%" }}>{forecastDate6}h</Text>
 
               <Center>
-                <Text>{forecast.list[2].weather[0].description}</Text>
+                <Text fontSize={{ base: "65%", md: "80%", lg: "100%" }}>{forecast.list[2].weather[0].description}</Text>
               </Center>
 
               <Center>
@@ -113,11 +115,11 @@ function Card({ weathers, forecast }) {
               </Center>
             </Box>
 
-            <Box ml={5}>
-              <Text fontSize='90%'>{forecastDate9}h</Text>
+            <Box ml={{ base: "10%", md: "5px", lg: "5px" }}>
+              <Text fontSize={{ base: "80%", md: "80%", lg: "90%" }}>{forecastDate9}h</Text>
 
               <Center>
-                <Text>{forecast.list[3].weather[0].description}</Text>
+                <Text fontSize={{ base: "65%", md: "80%", lg: "100%" }}>{forecast.list[3].weather[0].description}</Text>
               </Center>
 
               <Center>
