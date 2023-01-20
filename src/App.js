@@ -74,7 +74,7 @@ function App() {
               <Input
                 fontSize={{ base: "12px", md: "22px", lg: "22px" }}
                 pr="8rem"
-                placeholder="Select a country..."
+                placeholder="Escribe el pais..."
                 value={search}
                 onChange={onChange}
                 background="white"
