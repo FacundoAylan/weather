@@ -9,7 +9,6 @@ import {
   Container,
   Flex,
   IconButton,
-  Image,
   Input,
   InputGroup,
   InputRightElement,
@@ -20,18 +19,20 @@ import {
   ModalOverlay,
   Text,
 } from "@chakra-ui/react";
-import { getData } from "./Redux/action";
+import { getWeather, getForecast } from "./Redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form } from "formik";
 import { SearchIcon } from "@chakra-ui/icons";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
+import Card from "./component/card/Card";
 
-import Icons from "./component/icons/Icons";
+
 
 
 function App() {
 
   const weathers = useSelector((state) => state.weather);
+  const forecast = useSelector( (state) => state.forecast);
   const error = useSelector((state) => state.error);
 
   const [ open, setOpen] = useState(true)
@@ -41,7 +42,8 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getData("argentina"));
+    dispatch(getWeather("argentina"));
+    dispatch(getForecast("argentina"))
   }, [ dispatch ]);
 
   
@@ -49,15 +51,17 @@ function App() {
     setSeach(e.target.value);
   };
   const handleSubmit = () => {
-    return dispatch(getData(search));
+    dispatch(getWeather(search));
+    dispatch(getForecast(search))
   };
   return (
-    <Container>
+    <>
       <Center>
         <Text
           fontSize={{ base: "25px", md: "35px", lg: "35px" }}
           mt="1%"
           p="0.5%"
+          color='white'
         >
           React weather App
         </Text>
@@ -93,39 +97,10 @@ function App() {
       </Center>
       {/* search */}
 
-      {weathers ? (
-        <Container
-          bg="white"
-          mt={10}
-          w={{ base: "60vw", md: "35vw", lg: "25vw" }}
-          h={{ base: "45vh", md: "55vh", lg: "60vh" }}
-          borderRadius={12}
-          pt={4}
-          border="2px"
-          borderColor="black"
-          color="black"
-        >
-          <Center fontSize='100%' p={0}>
-            {weathers.name.toUpperCase()}
-          </Center>
-
-          <Center bg="#0D74FF" borderRadius={12}>
-            <Image
-              src={Icons(weathers.weather[0].main)}
-              alt="icons-weather"
-              type="img/svg"
-              boxSize={{ base: "55vh", md: "45vh", lg: "35vh" }}
-              borderRadius="full"
-              h={{ base: "20vh", md: "25vh", lg: "30vh" }}
-            />
-          </Center>
-
-          <Text>Temperature : {weathers.main.temp.toFixed(0)}&deg; K</Text>
-          <Text>
-            Max\Min: {weathers.main.temp_min.toFixed(0)}&deg; K \{" "}
-            {weathers.main.temp_max.toFixed(0)}&deg; K
-          </Text>
-        </Container>
+      {weathers && forecast ? (
+        <Center>
+          <Card weathers={weathers} forecast={forecast}/>
+        </Center>
       ) : (
         <Container
           mt={10}
@@ -144,7 +119,7 @@ function App() {
                 thickness="4px"
                 //
               />
-              <Text fontSize={{ base: "20px", md: "25px", lg: "36px" }}>
+              <Text fontSize={{ base: "20px", md: "25px", lg: "36px" }} color='white'>
                 LOADING WEATHER
               </Text>
             </Flex>
@@ -181,6 +156,7 @@ function App() {
               isRound={true}
               _hover={{ bg: "#0D74FF" }}
               icon={<BsGithub size="40px" />}
+              color='white'
             />
           </a>
 
@@ -195,11 +171,12 @@ function App() {
               size="lg"
               _hover={{ bg: "#0D74FF" }}
               icon={<BsLinkedin size="40px" />}
+              color='white'
             />
           </a>
         </Center>
       </Box>
-    </Container>
+    </>
   );
 }
 

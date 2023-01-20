@@ -1,6 +1,7 @@
-import { GET_WEATHER, ERROR_WEATHER } from '../action-type/index';
+import { GET_WEATHER, GET_FORECAST, ERROR_WEATHER } from '../action-type/index';
 const initialState = {
   weather: '',
+  forecast: '',
   error: ''
 };
 const rootReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         weather: action.payload
       }
+      case GET_FORECAST :
+        return {
+          ...state,
+          forecast: action.payload
+        }
       case ERROR_WEATHER :
         return {
           ...state,
